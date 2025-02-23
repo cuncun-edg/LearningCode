@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://42.192.149.249:3306/big_event
+    username: root
+    password: yiliangcun1A?
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
