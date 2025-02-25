@@ -6,6 +6,7 @@ import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
 // import com.sky.context.BaseContext;
+import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.dto.EmployeePageQueryDTO;
@@ -107,6 +108,32 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .build();
         employeeMapper.update(employee);
     }
+
+    /**
+     * 根据id查询员工
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee getById(long id) {
+        return employeeMapper.getById(id);
+    }
+
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        // 对象属性拷贝
+        BeanUtils.copyProperties(employeeDTO, employee);
+        // 设置更新时间
+         employee.setUpdateTime(LocalDateTime.now());
+        // 记录当家更新人 id
+         employee.setUpdateUser(BaseContext.getCurrentId());
+
+        // 保存到数据库
+        employeeMapper.update(employee);
+    }
+
+
 
 }
 
