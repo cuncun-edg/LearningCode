@@ -75,10 +75,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         BeanUtils.copyProperties(employeeDTO,employee);
         employee.setStatus(StatusConstant.ENABLE);
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes(StandardCharsets.UTF_8)));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setCreateUser(10l);
-        employee.setUpdateUser(10l);
+        //employee.setCreateTime(LocalDateTime.now());
+        //employee.setUpdateTime(LocalDateTime.now());
+        //employee.setCreateUser(10l);
+        //employee.setUpdateUser(10l);
 
         employeeMapper.insert(employee);
     }
@@ -125,9 +125,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         // 对象属性拷贝
         BeanUtils.copyProperties(employeeDTO, employee);
         // 设置更新时间
-         employee.setUpdateTime(LocalDateTime.now());
+        // employee.setUpdateTime(LocalDateTime.now());
         // 记录当家更新人 id
-         employee.setUpdateUser(BaseContext.getCurrentId());
+        // employee.setUpdateUser(BaseContext.getCurrentId());
 
         // 保存到数据库
         employeeMapper.update(employee);
